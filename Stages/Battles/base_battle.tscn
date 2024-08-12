@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c80vbvpt4u3rk"]
+
+[ext_resource type="Script" path="res://Common/TurnMachine/turn_machine.gd" id="1_ld4rb"]
+[ext_resource type="PackedScene" uid="uid://feny2m1370vm" path="res://Entities/Friendly/Player/player.tscn" id="2_60ivp"]
+[ext_resource type="PackedScene" uid="uid://dc1fnpw2oxqaw" path="res://Entities/Hostile/base_hostile.tscn" id="3_mokqe"]
+
+[node name="BaseBattle" type="Node2D"]
+
+[node name="TurnMachine" type="Node" parent="."]
+script = ExtResource("1_ld4rb")
+
+[node name="Player" parent="TurnMachine" instance=ExtResource("2_60ivp")]
+position = Vector2(86, 68)
+
+[node name="Player2" parent="TurnMachine" instance=ExtResource("2_60ivp")]
+position = Vector2(113, 136)
+
+[node name="BaseHostile" parent="TurnMachine" instance=ExtResource("3_mokqe")]
+position = Vector2(256, 142)
+
+[node name="BaseHostile2" parent="TurnMachine" instance=ExtResource("3_mokqe")]
+position = Vector2(246, 51)

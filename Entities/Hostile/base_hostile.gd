@@ -1,4 +1,6 @@
 extends HostileEntity
 
 func handle_turn():
-	print('hostile attack raah')
+	await get_tree().create_timer(1).timeout
+	print('hostile')
+	turn_over.emit()

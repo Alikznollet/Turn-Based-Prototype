@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://eyc7mu68o2o7"]
+
+[ext_resource type="Script" path="res://ui/battle_choice_menu.gd" id="1_eylfw"]
+[ext_resource type="PackedScene" uid="uid://b7d7cgsjlvhw3" path="res://ui/battle_button.tscn" id="1_m3dyy"]
+[ext_resource type="Texture2D" uid="uid://dy0twv1uscq1u" path="res://Assets/Icons/attack_icon.png" id="2_twu68"]
+[ext_resource type="Texture2D" uid="uid://b2mnen3p8jtex" path="res://Assets/Icons/special_icon.png" id="3_8maw6"]
+[ext_resource type="Script" path="res://Common/BattleComponents/attack_component.gd" id="4_7yc2s"]
+[ext_resource type="Texture2D" uid="uid://5n32j8ttlu5x" path="res://Assets/Icons/item_icon.png" id="4_yhk3y"]
+[ext_resource type="Script" path="res://Common/BattleComponents/special_component.gd" id="6_dkt8t"]
+[ext_resource type="Script" path="res://Common/BattleComponents/item_component.gd" id="8_h6amc"]
+
+[node name="BattleChoiceMenu" type="Node2D"]
+script = ExtResource("1_eylfw")
+
+[node name="Attack" parent="." node_paths=PackedStringArray("component") instance=ExtResource("1_m3dyy")]
+position = Vector2(-14, 0)
+icon_texture = ExtResource("2_twu68")
+component = NodePath("AttackComponent")
+
+[node name="AttackComponent" type="Node" parent="Attack"]
+script = ExtResource("4_7yc2s")
+
+[node name="Special" parent="." node_paths=PackedStringArray("component") instance=ExtResource("1_m3dyy")]
+icon_texture = ExtResource("3_8maw6")
+component = NodePath("SpecialComponent")
+
+[node name="SpecialComponent" type="Node" parent="Special"]
+script = ExtResource("6_dkt8t")
+
+[node name="Item" parent="." node_paths=PackedStringArray("component") instance=ExtResource("1_m3dyy")]
+position = Vector2(14, 0)
+icon_texture = ExtResource("4_yhk3y")
+component = NodePath("ItemComponent")
+
+[node name="ItemComponent" type="Node" parent="Item"]
+script = ExtResource("8_h6amc")

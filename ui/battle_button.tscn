@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7d7cgsjlvhw3"]
+
+[ext_resource type="Texture2D" uid="uid://bjpejusovv0y" path="res://Assets/Buttons/action_sheet.png" id="1_ly07f"]
+[ext_resource type="Script" path="res://ui/battle_button.gd" id="2_vwo8y"]
+
+[node name="BattleButton" type="Sprite2D"]
+texture = ExtResource("1_ly07f")
+hframes = 2
+script = ExtResource("2_vwo8y")
+
+[node name="Icon" type="Sprite2D" parent="."]
