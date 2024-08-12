@@ -12,12 +12,14 @@ func _ready():
 	component.connect("component_completed", completed)
 
 func started_hovering():
+	$Hover.play()
 	frame = 1
 	
 func stopped_hovering():
 	frame = 0
 	
 func selected():
+	$Select.play()
 	component.open_component()
 	
 func deselected():
