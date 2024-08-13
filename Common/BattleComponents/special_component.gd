@@ -6,7 +6,13 @@ class_name SpecialComponent
 func _ready():
 	UI.connect("choice_made", choice_made)
 	UI.connect("menu_quit", close_component)
-	ITEMS.append("shell")
+	
+	# PLACEHOLDERS
+	var special1: SpecialAttackItem = SpecialAttackItem.new()
+	special1.damage = 5
+	special1.item_name = "special1"
+	special1.sp_cost = 3
+	ITEMS.append(special1)
 
 func open_component():
 	UI.open_menu(self)

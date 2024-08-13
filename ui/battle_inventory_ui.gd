@@ -62,7 +62,7 @@ func _process(_delta):
 		if Input.is_action_just_pressed("space") and $Timer.is_stopped():
 			currently_selected.select()
 			
-func _item_selected(item: String):
+func _item_selected(item: Item):
 	choice_made.emit(item)
 	close_menu()
 

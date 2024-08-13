@@ -4,7 +4,7 @@ class_name Component
 signal component_closed()
 signal component_completed(item: Item)
 
-var ITEMS: Array[String] = []
+var ITEMS: Array[Item] = []
 
 func open_component():
 	pass
