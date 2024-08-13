@@ -10,9 +10,10 @@ var active: bool = false
 func _ready():
 	visible = false
 	for battle_button in get_children():
-		sprites.append(battle_button)
-		battle_button.connect("action_completed", choice_made)
-		battle_button.connect("action_broken_down", restart)
+		if battle_button is BattleButton:
+			sprites.append(battle_button)
+			battle_button.connect("action_completed", choice_made)
+			battle_button.connect("action_broken_down", restart)
 
 func start_choice():
 	current_index = 0

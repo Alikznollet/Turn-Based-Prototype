@@ -13,6 +13,7 @@ func _ready():
 	
 func hover():
 	texture = selected
+	$AudioStreamPlayer.play()
 	
 func unhover():
 	texture = base 

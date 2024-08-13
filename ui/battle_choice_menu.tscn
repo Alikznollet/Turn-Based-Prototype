@@ -25,8 +25,9 @@ script = ExtResource("4_7yc2s")
 icon_texture = ExtResource("3_8maw6")
 component = NodePath("SpecialComponent")
 
-[node name="SpecialComponent" type="Node" parent="Special"]
+[node name="SpecialComponent" type="Node" parent="Special" node_paths=PackedStringArray("UI")]
 script = ExtResource("6_dkt8t")
+UI = NodePath("../../BattleInventoryUI")
 
 [node name="Item" parent="." node_paths=PackedStringArray("component") instance=ExtResource("1_m3dyy")]
 position = Vector2(14, 0)
@@ -35,9 +36,6 @@ component = NodePath("ItemComponent")
 
 [node name="ItemComponent" type="Node" parent="Item" node_paths=PackedStringArray("UI")]
 script = ExtResource("8_h6amc")
-UI = NodePath("../BattleItemUI")
+UI = NodePath("../../BattleInventoryUI")
 
-[node name="BattleItemUI" parent="Item" instance=ExtResource("9_1i80b")]
-
-[connection signal="choice_made" from="Item/BattleItemUI" to="Item/ItemComponent" method="choice_made"]
-[connection signal="menu_quit" from="Item/BattleItemUI" to="Item/ItemComponent" method="close_component"]
+[node name="BattleInventoryUI" parent="." instance=ExtResource("9_1i80b")]

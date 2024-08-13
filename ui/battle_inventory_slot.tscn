@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://de851kn8jmt8c"]
+[gd_scene load_steps=7 format=3 uid="uid://de851kn8jmt8c"]
 
 [ext_resource type="Script" path="res://ui/battle_inventory_slot.gd" id="1_p6x5n"]
 [ext_resource type="Texture2D" uid="uid://cjvsutgmdd0dp" path="res://Assets/ui/menus/battle_inventory_slot.png" id="1_uhfmq"]
 [ext_resource type="PackedScene" uid="uid://bqknweay4lo7u" path="res://ui/inventory_button.tscn" id="2_d4mh0"]
 [ext_resource type="Texture2D" uid="uid://eukbj4fxoiq0" path="res://Assets/ui/menus/battle_inventory_slot_selected.png" id="2_l5nf0"]
 [ext_resource type="Texture2D" uid="uid://cvn8q0e7jcf4c" path="res://Assets/Icons/accept_icon.png" id="3_e7w84"]
+[ext_resource type="AudioStream" uid="uid://0mlacgsfrbry" path="res://Assets/Sounds/ui_sounds/click.wav" id="6_5eqxd"]
 
 [node name="BattleInventorySlot" type="HBoxContainer"]
 anchors_preset = -1
@@ -21,7 +22,22 @@ layout_mode = 2
 texture = ExtResource("1_uhfmq")
 stretch_mode = 2
 
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 2
+anchor_left = 0.159
+anchor_right = 1.0
+anchor_bottom = 0.923
+offset_left = 0.00799942
+offset_bottom = 0.000999451
+theme_override_font_sizes/font_size = 8
+text = "item"
+vertical_alignment = 1
+
 [node name="InventoryButton" parent="." instance=ExtResource("2_d4mh0")]
 layout_mode = 2
 stretch_mode = 2
 icon = ExtResource("3_e7w84")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_5eqxd")
+volume_db = 5.0

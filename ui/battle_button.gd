@@ -20,7 +20,6 @@ func stopped_hovering():
 	frame = 0
 	
 func selected():
-	$Select.play()
 	component.open_component()
 	
 func deselected():
