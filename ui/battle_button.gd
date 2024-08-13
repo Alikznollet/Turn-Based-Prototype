@@ -2,6 +2,7 @@ extends Sprite2D
 class_name BattleButton
 
 signal action_completed(action: String)
+signal action_broken_down()
 
 @export var icon_texture: Texture2D
 @export var component: Component
@@ -23,7 +24,7 @@ func selected():
 	component.open_component()
 	
 func deselected():
-	component.close_component()
+	action_broken_down.emit()
 	
 func completed(action: String):
 	component.close_component()

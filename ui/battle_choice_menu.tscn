@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://eyc7mu68o2o7"]
+[gd_scene load_steps=10 format=3 uid="uid://eyc7mu68o2o7"]
 
 [ext_resource type="Script" path="res://ui/battle_choice_menu.gd" id="1_eylfw"]
 [ext_resource type="PackedScene" uid="uid://b7d7cgsjlvhw3" path="res://ui/battle_button.tscn" id="1_m3dyy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://5n32j8ttlu5x" path="res://Assets/Icons/item_icon.png" id="4_yhk3y"]
 [ext_resource type="Script" path="res://Common/BattleComponents/special_component.gd" id="6_dkt8t"]
 [ext_resource type="Script" path="res://Common/BattleComponents/item_component.gd" id="8_h6amc"]
+[ext_resource type="PackedScene" uid="uid://dmux22b84xbwe" path="res://ui/battle_inventory_ui.tscn" id="9_1i80b"]
 
 [node name="BattleChoiceMenu" type="Node2D"]
 script = ExtResource("1_eylfw")
@@ -32,5 +33,11 @@ position = Vector2(14, 0)
 icon_texture = ExtResource("4_yhk3y")
 component = NodePath("ItemComponent")
 
-[node name="ItemComponent" type="Node" parent="Item"]
+[node name="ItemComponent" type="Node" parent="Item" node_paths=PackedStringArray("UI")]
 script = ExtResource("8_h6amc")
+UI = NodePath("../BattleItemUI")
+
+[node name="BattleItemUI" parent="Item" instance=ExtResource("9_1i80b")]
+
+[connection signal="choice_made" from="Item/BattleItemUI" to="Item/ItemComponent" method="choice_made"]
+[connection signal="menu_quit" from="Item/BattleItemUI" to="Item/ItemComponent" method="close_component"]

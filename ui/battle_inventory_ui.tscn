@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmux22b84xbwe"]
+
+[ext_resource type="Texture2D" uid="uid://flemqtkljkq7" path="res://Assets/ui/menus/battle_inventory_base.png" id="1_6cc16"]
+[ext_resource type="Script" path="res://ui/battle_inventory_ui.gd" id="1_bhalc"]
+[ext_resource type="PackedScene" uid="uid://bqknweay4lo7u" path="res://ui/inventory_button.tscn" id="2_u0y44"]
+[ext_resource type="PackedScene" uid="uid://de851kn8jmt8c" path="res://ui/battle_inventory_slot.tscn" id="3_4slgf"]
+[ext_resource type="Texture2D" uid="uid://bjx38tbp1soc6" path="res://Assets/Icons/return_icon.png" id="3_snp0q"]
+
+[node name="BattleInventoryUI" type="CanvasLayer"]
+script = ExtResource("1_bhalc")
+
+[node name="QuitMenu" parent="." instance=ExtResource("2_u0y44")]
+anchor_left = 0.597
+anchor_top = 0.15
+anchor_right = 0.641
+anchor_bottom = 0.228
+offset_left = -0.0400085
+offset_right = -0.12001
+offset_bottom = -0.0400009
+size_flags_horizontal = 4
+expand_mode = 1
+icon = ExtResource("3_snp0q")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.233
+anchor_right = 0.65
+anchor_bottom = 0.767
+offset_left = 28.0
+offset_top = 28.06
+offset_right = -28.0
+offset_bottom = -28.06
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6cc16")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 104.0
+offset_bottom = 40.0
+theme_override_constants/separation = 1
+
+[node name="BattleInventorySlot" parent="TextureRect/VBoxContainer" instance=ExtResource("3_4slgf")]
+layout_mode = 2
+
+[node name="BattleInventorySlot2" parent="TextureRect/VBoxContainer" instance=ExtResource("3_4slgf")]
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="quit_menu" from="QuitMenu" to="." method="_on_quit_menu_quit_menu"]

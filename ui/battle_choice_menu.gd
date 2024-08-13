@@ -12,12 +12,16 @@ func _ready():
 	for battle_button in get_children():
 		sprites.append(battle_button)
 		battle_button.connect("action_completed", choice_made)
+		battle_button.connect("action_broken_down", restart)
 
 func start_choice():
 	current_index = 0
 	currently_selected = sprites[current_index]
 	currently_selected.started_hovering()
 	visible = true
+	active = true
+	
+func restart():
 	active = true
 			
 func _switch_index(delta: int):
@@ -26,7 +30,7 @@ func _switch_index(delta: int):
 	currently_selected = sprites[current_index]
 	currently_selected.started_hovering()
 	
-func _process(delta):
+func _process(_delta):
 	if active:
 		if Input.is_action_just_pressed("left") and current_index > 0:
 			_switch_index(-1)
@@ -35,6 +39,7 @@ func _process(delta):
 			
 		if Input.is_action_just_pressed("space"):
 			currently_selected.selected()
+			active = false
 			
 func choice_made(action: String):
 	visible = false

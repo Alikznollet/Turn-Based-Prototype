@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqn0o13gn25jd"
-path="res://.godot/imported/action_hover.png-d9e5ebe421736371dc39bd85148bf4c9.ctex"
+uid="uid://flemqtkljkq7"
+path="res://.godot/imported/battle_inventory_base.png-11c1e62cbabbe5049701b24193a3cc7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Buttons/action_hover.png"
-dest_files=["res://.godot/imported/action_hover.png-d9e5ebe421736371dc39bd85148bf4c9.ctex"]
+source_file="res://Assets/ui/menus/battle_inventory_base.png"
+dest_files=["res://.godot/imported/battle_inventory_base.png-11c1e62cbabbe5049701b24193a3cc7b.ctex"]
 
 [params]
 
