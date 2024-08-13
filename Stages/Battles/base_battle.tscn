@@ -11,9 +11,11 @@ script = ExtResource("1_ld4rb")
 
 [node name="Player" parent="TurnMachine" instance=ExtResource("2_60ivp")]
 position = Vector2(86, 68)
+speed = 10
 
 [node name="Player2" parent="TurnMachine" instance=ExtResource("2_60ivp")]
 position = Vector2(113, 136)
+speed = 30
 
 [node name="BaseHostile" parent="TurnMachine" instance=ExtResource("3_mokqe")]
 position = Vector2(256, 142)

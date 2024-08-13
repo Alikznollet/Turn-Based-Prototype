@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc1fnpw2oxqaw"]
+[gd_scene load_steps=7 format=3 uid="uid://dc1fnpw2oxqaw"]
 
 [ext_resource type="Script" path="res://Entities/Hostile/base_hostile.gd" id="1_pk6c0"]
+[ext_resource type="Texture2D" uid="uid://cpgwjevnkckjk" path="res://Assets/ui/enemy_selector_sheet.png" id="2_2m8vn"]
+[ext_resource type="Script" path="res://Common/StatComponents/health_component.gd" id="2_co3of"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qol6i"]
-size = Vector2(64, 64)
+size = Vector2(26, 38)
 
 [sub_resource type="Gradient" id="Gradient_cus3j"]
 offsets = PackedFloat32Array(1)
@@ -12,11 +14,25 @@ colors = PackedColorArray(0.844716, 0, 0.260032, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xmece"]
 gradient = SubResource("Gradient_cus3j")
 
-[node name="BaseHostile" type="CharacterBody2D"]
+[node name="BaseHostile" type="CharacterBody2D" node_paths=PackedStringArray("marker", "health")]
 script = ExtResource("1_pk6c0")
+marker = NodePath("Marker")
+health = NodePath("HealthComponent")
+speed = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qol6i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(0.40625, 0.59375)
 texture = SubResource("GradientTexture2D_xmece")
+
+[node name="Marker" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+texture = ExtResource("2_2m8vn")
+hframes = 2
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_co3of")
+MAX_HEALTH = 100
