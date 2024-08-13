@@ -4,10 +4,6 @@ class_name Player
 func handle_turn():
 	$BattleChoiceMenu.start_choice()
 
-#func _on_battle_choice_menu_action_chosen(action: String):
-	#current_move = action
-	#turn_over.emit()
-
 func _on_target_selector_target_selected(item: Item):
 	current_move = item
 	turn_over.emit()

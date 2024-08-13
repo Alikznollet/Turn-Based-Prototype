@@ -26,14 +26,18 @@ func _next_entity(index: int):
 	var entity: Entity = entities[index]
 	entity.handle_turn()
 	await entity.turn_over
+	print(entity)
 	
-	print(entity.current_move.item_name)
-	print(entity.current_move.target)
+	if entity.current_move.cutscene:
+		var cutscene: Node2D = entity.current_move.cutscene.instantiate()
+		$".".add_child(cutscene)
+		cutscene.set_params(entity, entity.current_move.target)
+		cutscene.play_animation()
+		await cutscene.tree_exited
 	
 	await get_tree().create_timer(0.5).timeout
 	# TODO: make an entity or player correctly display basic moves with
 	# correct timing here
-	
 	
 	if index + 1 == entities.size():
 		_next_entity(0)
