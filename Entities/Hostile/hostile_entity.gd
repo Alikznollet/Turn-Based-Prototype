@@ -5,6 +5,7 @@ class_name HostileEntity
 
 func _ready():
 	marker.visible = false
+	add_to_group("Hostile")
 
 func enable_marker():
 	marker.visible = true

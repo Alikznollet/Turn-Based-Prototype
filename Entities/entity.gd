@@ -8,9 +8,8 @@ class_name Entity
 signal turn_over()
 
 var current_move: String
-var enemy_list: Array[Entity]
 
-func handle_turn(entities: Array[Entity]):
+func handle_turn():
 	pass
 	
 func enable_marker():

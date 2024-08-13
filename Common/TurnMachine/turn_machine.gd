@@ -24,7 +24,7 @@ func _ready():
 ## their action picking sequences.
 func _next_entity(index: int):
 	var entity: Entity = entities[index]
-	entity.handle_turn(entities)
+	entity.handle_turn()
 	await entity.turn_over
 	print(entity.current_move)
 	await get_tree().create_timer(0.5).timeout
@@ -39,4 +39,5 @@ func _next_entity(index: int):
 		
 func _sort_speed(a: Entity, b: Entity):
 	return a.speed > b.speed
+		
 		

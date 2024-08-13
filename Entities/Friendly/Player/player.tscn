@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://feny2m1370vm"]
+[gd_scene load_steps=9 format=3 uid="uid://feny2m1370vm"]
 
 [ext_resource type="Script" path="res://Entities/Friendly/Player/player.gd" id="1_3gmkc"]
 [ext_resource type="Script" path="res://Common/StateMachine/FSM.gd" id="2_5utx6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Common/StateMachine/Battling.gd" id="3_qbw7j"]
 [ext_resource type="PackedScene" uid="uid://eyc7mu68o2o7" path="res://ui/battle_choice_menu.tscn" id="5_88xx6"]
 [ext_resource type="Script" path="res://Common/StatComponents/health_component.gd" id="6_yfyfp"]
+[ext_resource type="Script" path="res://Common/TurnMachine/target_selector.gd" id="7_kigwt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xlk1t"]
 size = Vector2(14, 26)
@@ -34,4 +35,10 @@ MAX_HEALTH = 100
 [node name="BattleChoiceMenu" parent="." instance=ExtResource("5_88xx6")]
 position = Vector2(0, -23)
 
+[node name="TargetSelector" type="Node" parent="."]
+script = ExtResource("7_kigwt")
+
 [connection signal="action_chosen" from="BattleChoiceMenu" to="." method="_on_battle_choice_menu_action_chosen"]
+[connection signal="action_chosen" from="BattleChoiceMenu" to="TargetSelector" method="_on_battle_choice_menu_action_chosen"]
+[connection signal="stop_selection" from="TargetSelector" to="." method="_on_target_selector_stop_selection"]
+[connection signal="target_selected" from="TargetSelector" to="." method="_on_target_selector_target_selected"]

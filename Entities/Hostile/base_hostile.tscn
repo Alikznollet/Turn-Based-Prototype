@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dc1fnpw2oxqaw"]
+[gd_scene load_steps=11 format=3 uid="uid://dc1fnpw2oxqaw"]
 
 [ext_resource type="Script" path="res://Entities/Hostile/base_hostile.gd" id="1_pk6c0"]
 [ext_resource type="Texture2D" uid="uid://cpgwjevnkckjk" path="res://Assets/ui/enemy_selector_sheet.png" id="2_2m8vn"]
 [ext_resource type="Script" path="res://Common/StatComponents/health_component.gd" id="2_co3of"]
+[ext_resource type="AudioStream" uid="uid://0mlacgsfrbry" path="res://Assets/Sounds/ui_sounds/click.wav" id="4_0e7vv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qol6i"]
 size = Vector2(26, 38)
@@ -13,6 +14,60 @@ colors = PackedColorArray(0.844716, 0, 0.260032, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xmece"]
 gradient = SubResource("Gradient_cus3j")
+
+[sub_resource type="Animation" id="Animation_gbr12"]
+resource_name = "animation"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -24), Vector2(0, -25)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["", -1, 1.0, false],
+"method": &"play"
+}, {
+"args": ["", -1],
+"method": &"play_backwards"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6nhdl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4x0sd"]
+_data = {
+"RESET": SubResource("Animation_6nhdl"),
+"animation": SubResource("Animation_gbr12")
+}
 
 [node name="BaseHostile" type="CharacterBody2D" node_paths=PackedStringArray("marker", "health")]
 script = ExtResource("1_pk6c0")
@@ -29,10 +84,22 @@ scale = Vector2(0.40625, 0.59375)
 texture = SubResource("GradientTexture2D_xmece")
 
 [node name="Marker" type="Sprite2D" parent="."]
-position = Vector2(0, -24)
+position = Vector2(0, -25)
 texture = ExtResource("2_2m8vn")
 hframes = 2
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_co3of")
 MAX_HEALTH = 100
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4x0sd")
+}
+autoplay = "animation"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0e7vv")
+volume_db = 5.0
+
+[connection signal="frame_changed" from="Marker" to="." method="_on_marker_texture_changed"]
