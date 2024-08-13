@@ -7,7 +7,7 @@ class_name Entity
 
 signal turn_over()
 
-var current_move: String
+var current_move: Item
 
 func handle_turn():
 	pass
@@ -23,3 +23,8 @@ func hover_marker():
 	
 func unhover_marker():
 	pass
+	
+func health_change(update: HealthUpdate):
+	print(update.current_health)
+	print(update.previous_health - update.current_health)
+	

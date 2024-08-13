@@ -1,6 +1,6 @@
 extends Node2D
 
-signal action_chosen(action: String)
+signal action_chosen(item: Item)
 
 var sprites: Array[BattleButton]
 var currently_selected: BattleButton
@@ -42,9 +42,9 @@ func _process(_delta):
 			currently_selected.selected()
 			active = false
 			
-func choice_made(action: String):
+func choice_made(item: Item):
 	visible = false
 	active = false
 	
-	action_chosen.emit(action)
+	action_chosen.emit(item)
 	currently_selected.stopped_hovering()

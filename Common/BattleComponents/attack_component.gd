@@ -2,7 +2,11 @@ extends Component
 class_name AttackComponent
 
 func open_component():
-	component_completed.emit("attack")
+	var item: AttackItem = AttackItem.new()
+	# NOTE: this is all temporary
+	item.item_name = "basic_attack"
+	item.damage = 10
+	component_completed.emit(item)
 	
 func close_component():
-	print("closed")
+	pass

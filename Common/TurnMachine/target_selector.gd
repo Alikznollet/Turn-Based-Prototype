@@ -1,10 +1,10 @@
 extends Node
 class_name TargetSelector
 
-signal target_selected(action: String)
+signal target_selected(item: Item)
 signal stop_selection()
 
-var action: String
+var item: Item
 
 var active: bool = false
 var enemies: Array[Node]
@@ -51,11 +51,12 @@ func _process(_delta):
 		if Input.is_action_just_pressed("space"):
 			# TODO: set the current target inside the action.
 			close_selection()
-			target_selected.emit(action)
+			item.target = current_enemy
+			target_selected.emit(item)
 		elif Input.is_action_just_pressed("x"):
 			close_selection()
 			stop_selection.emit()
 
-func _on_battle_choice_menu_action_chosen(action):
-	self.action = action
+func _on_battle_choice_menu_action_chosen(item):
+	self.item = item
 	start_selection()

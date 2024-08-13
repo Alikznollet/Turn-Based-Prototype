@@ -8,8 +8,8 @@ func handle_turn():
 	#current_move = action
 	#turn_over.emit()
 
-func _on_target_selector_target_selected(action: String):
-	current_move = action
+func _on_target_selector_target_selected(item: Item):
+	current_move = item
 	turn_over.emit()
 
 func _on_target_selector_stop_selection():

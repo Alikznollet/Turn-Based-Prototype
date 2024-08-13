@@ -38,6 +38,7 @@ position = Vector2(0, -23)
 [node name="TargetSelector" type="Node" parent="."]
 script = ExtResource("7_kigwt")
 
+[connection signal="healthChanged" from="HealthComponent" to="." method="health_change"]
 [connection signal="action_chosen" from="BattleChoiceMenu" to="." method="_on_battle_choice_menu_action_chosen"]
 [connection signal="action_chosen" from="BattleChoiceMenu" to="TargetSelector" method="_on_battle_choice_menu_action_chosen"]
 [connection signal="stop_selection" from="TargetSelector" to="." method="_on_target_selector_stop_selection"]

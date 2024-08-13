@@ -11,8 +11,8 @@ func _ready():
 func open_component():
 	UI.open_menu(self)
 	
-func choice_made(action: String):
-	component_completed.emit(action)
+func choice_made(item: Item):
+	component_completed.emit(item)
 	
 func close_component():
 	component_closed.emit()

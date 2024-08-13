@@ -1,7 +1,7 @@
 extends Sprite2D
 class_name BattleButton
 
-signal action_completed(action: String)
+signal action_completed(item: Item)
 signal action_broken_down()
 
 @export var icon_texture: Texture2D
@@ -25,7 +25,7 @@ func selected():
 func deselected():
 	action_broken_down.emit()
 	
-func completed(action: String):
+func completed(item: Item):
 	component.close_component()
-	action_completed.emit(action)
+	action_completed.emit(item)
 	

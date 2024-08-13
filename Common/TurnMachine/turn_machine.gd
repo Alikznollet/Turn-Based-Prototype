@@ -26,7 +26,12 @@ func _next_entity(index: int):
 	var entity: Entity = entities[index]
 	entity.handle_turn()
 	await entity.turn_over
-	print(entity.current_move)
+	
+	print(entity.current_move.item_name)
+	print(entity.current_move.target)
+	
+	entity.current_move.target.health.damage(entity.current_move.damage)
+	
 	await get_tree().create_timer(0.5).timeout
 	# TODO: make an entity or player correctly display basic moves with
 	# correct timing here

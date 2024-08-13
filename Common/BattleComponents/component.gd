@@ -2,7 +2,7 @@ extends Node
 class_name Component
 
 signal component_closed()
-signal component_completed(action: String)
+signal component_completed(item: Item)
 
 var ITEMS: Array[String] = []
 
