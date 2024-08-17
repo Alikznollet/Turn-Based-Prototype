@@ -14,7 +14,7 @@ var current_health: int:
 	set(newValue):
 		var previous_health = current_health
 		current_health = min(newValue, MAX_HEALTH)
-		current_health_percent = current_health / MAX_HEALTH
+		current_health_percent = float(current_health) / float(MAX_HEALTH)
 		has_health_remaining = not is_equal_approx(current_health, 0.0)
 		var health_update: HealthUpdate = HealthUpdate.new(
 			previous_health,
