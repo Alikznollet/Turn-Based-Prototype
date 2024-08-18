@@ -104,3 +104,4 @@ volume_db = 5.0
 
 [connection signal="frame_changed" from="Marker" to="." method="_on_marker_texture_changed"]
 [connection signal="healthChanged" from="HealthComponent" to="." method="health_change"]
+[connection signal="healthChanged" from="HealthComponent" to="." method="_on_health_component_health_changed"]

@@ -6,6 +6,7 @@ class_name HostileEntity
 func _ready():
 	marker.visible = false
 	add_to_group("Hostile")
+	hitmarker = preload("res://ui/hitmarker.tscn")
 
 func enable_marker():
 	marker.visible = true

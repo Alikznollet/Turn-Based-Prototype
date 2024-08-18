@@ -5,6 +5,8 @@ class_name Entity
 @export var health: HealthComponent
 @export var speed: int
 
+@onready var hitmarker: PackedScene
+
 signal turn_over()
 
 var current_move: Item
