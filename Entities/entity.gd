@@ -25,8 +25,5 @@ func hover_marker():
 	
 func unhover_marker():
 	pass
-	
-func health_change(update: HealthUpdate):
-	print(update.current_health)
-	print(update.previous_health - update.current_health)
+
 	
